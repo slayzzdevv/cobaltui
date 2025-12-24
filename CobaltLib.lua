@@ -1,7 +1,18 @@
 -- Cobalt UI Library Bundled Release
 local Modules = {}
 
-Modules["Theme"] = function()
+local function require(name)
+    if Modules[name] then
+        if type(Modules[name]) == "function" then
+            Modules[name] = Modules[name]()
+        end
+        return Modules[name]
+    end
+    -- Fallback to global require? No, likely an error in this bundled context.
+    return error("Module not found: " .. tostring(name))
+end
+
+\nModules["Theme"] = function()
 -- Cobalt/Theme.lua
 return {
     Main = Color3.fromRGB(15, 15, 15), -- Very dark background
@@ -30,8 +41,7 @@ return {
 }
 
 end
-
-Modules["Utility"] = function()
+\nModules["Utility"] = function()
 -- Cobalt/Utility.lua
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
@@ -129,8 +139,7 @@ end
 return Utility
 
 end
-
-Modules["Components/Elements"] = function()
+\nModules["Components/Elements"] = function()
 -- Cobalt/Components/Elements.lua
 local Theme = require("Theme")
 local Utility = require("Utility")
@@ -443,8 +452,7 @@ end
 return Elements
 
 end
-
-Modules["Components/Window"] = function()
+\nModules["Components/Window"] = function()
 -- Cobalt/Components/Window.lua
 local Theme = require("Theme")
 local Utility = require("Utility")
@@ -766,8 +774,7 @@ end
 return Window
 
 end
-
-Modules["init"] = function()
+\nModules["init"] = function()
 -- Cobalt/init.lua
 local Window = require("Components/Window")
 local Theme = require("Theme")
@@ -873,15 +880,4 @@ end
 return Cobalt
 
 end
-
-local function require(name)
-    if Modules[name] then
-        if type(Modules[name]) == "function" then
-            Modules[name] = Modules[name]()
-        end
-        return Modules[name]
-    end
-    return error("Module not found: " .. tostring(name))
-end
-
 return require("init")
