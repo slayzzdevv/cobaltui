@@ -528,7 +528,7 @@ function Window.new(title)
         return btn
     end
     
-    AddIcon(Theme.Icons.Close, "Close"):MouseButton1Click:Connect(function() self.ScreenGui:Destroy(); self.Blur:Destroy() end)
+    AddIcon(Theme.Icons.Close, "Close").MouseButton1Click:Connect(function() self.ScreenGui:Destroy(); self.Blur:Destroy() end)
     AddIcon(Theme.Icons.Minimize, "Min")
     AddIcon(Theme.Icons.Settings, "Settings")
     AddIcon(Theme.Icons.Search, "Search")
