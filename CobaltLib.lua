@@ -12,7 +12,7 @@ local function require(name)
     return error("Module not found: " .. tostring(name))
 end
 
-\nModules["Theme"] = function()
+Modules["Theme"] = function()
 -- Cobalt/Theme.lua
 return {
     Main = Color3.fromRGB(15, 15, 15), -- Very dark background
@@ -41,7 +41,7 @@ return {
 }
 
 end
-\nModules["Utility"] = function()
+Modules["Utility"] = function()
 -- Cobalt/Utility.lua
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
@@ -139,7 +139,7 @@ end
 return Utility
 
 end
-\nModules["Components/Elements"] = function()
+Modules["Components/Elements"] = function()
 -- Cobalt/Components/Elements.lua
 local Theme = require("Theme")
 local Utility = require("Utility")
@@ -452,7 +452,7 @@ end
 return Elements
 
 end
-\nModules["Components/Window"] = function()
+Modules["Components/Window"] = function()
 -- Cobalt/Components/Window.lua
 local Theme = require("Theme")
 local Utility = require("Utility")
@@ -774,7 +774,7 @@ end
 return Window
 
 end
-\nModules["init"] = function()
+Modules["init"] = function()
 -- Cobalt/init.lua
 local Window = require("Components/Window")
 local Theme = require("Theme")
